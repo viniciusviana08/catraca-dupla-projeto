@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Painel Admin - Academia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <!-- Container Principal -->
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="bg-gradient-to-b from-indigo-700 to-purple-800 w-64 shadow-xl fixed h-full">
+      <div class="p-6">
+        <h2 class="text-white text-2xl font-bold">🏋️♂️ LV'Admin</h2>
+      </div>
+      <nav class="mt-6">
+        <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-3 px-6 bg-indigo-600">
+          <i class="fas fa-users mr-3"></i>
+          Gerenciar Alunos
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="ml-64 flex-1 p-8">
+      <!-- Header -->
+      <header class="flex justify-between items-center mb-8">
+        <div>
+          <h1 class="text-3xl font-bold text-gray-800">Painel Administrativo</h1>
+          <p class="text-gray-600">Gerencie os alunos cadastrados na academia</p>
+        </div>
+        <div class="flex items-center">
+          <button class="flex items-center text-gray-600 hover:bg-gray-100 px-4 py-2 rounded-lg">
+            <i class="fas fa-sign-out-alt mr-2"></i>
+            Sair
+          </button>
+        </div>
+      </header>
+
+      <!-- Card de Formulário -->
+      <section class="bg-white rounded-xl shadow-lg mb-8 p-6">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">
+          <i class="fas fa-user-edit mr-2 text-indigo-600"></i>
+          Cadastrar/Editar Aluno
+        </h2>
+        <form id="formUsuario" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-gray-700">Nome Completo</label>
+            <div class="relative">
+              <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+              <input id="nome" type="text" 
+                     class="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                     placeholder="Nome Completo" required>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-gray-700">CPF</label>
+            <div class="relative">
+              <i class="fas fa-id-card absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+              <input id="cpf" type="text"
+                     class="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                     placeholder="000.000.000-00" required>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-gray-700">Status</label>
+            <div class="relative">
+              <select id="active" class="w-full py-3 pl-4 pr-8 border rounded-lg focus:ring-2 focus:ring-indigo-500">
+                <option value="true">Ativo</option>
+                <option value="false">Inativo</option>
+              </select>
+              <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
+          </div>
+
+          <div class="md:col-span-2">
+            <button type="submit" 
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+              <i class="fas fa-save mr-2"></i>
+              Salvar Alterações
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Card da Tabela -->
+      <section class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">
+          <i class="fas fa-list-alt mr-2 text-indigo-600"></i>
+          Usuários Cadastrados
+        </h2>
+        <div class="overflow-x-auto rounded-lg border">
+          <table class="w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Nome</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">CPF</th>
+                <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700">Status</th>
+                <th class="px-6 py-4 text-right text-sm font-semibold text-gray-700">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaUsuarios" class="divide-y divide-gray-200">
+              <!-- Linhas geradas dinamicamente -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
